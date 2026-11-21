@@ -1,18 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My Blog</title>
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
 </head>
 <body>
-    <h1>My Blog</h1>
+    <header>
+        <h1>My Blog</h1>
+    </header>
 
-    {% for post in posts %}
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.content }}</p>
-        <small>{{ post.created_at }}</small>
-        <hr>
-    {% empty %}
-        <p>No posts yet.</p>
-    {% endfor %}
+    <main>
+        {% for post in posts %}
+            <article class="post">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.content }}</p>
+                <small>{{ post.created_at }}</small>
+            </article>
+        {% empty %}
+            <p>No posts yet.</p>
+        {% endfor %}
+    </main>
 </body>
 </html>
